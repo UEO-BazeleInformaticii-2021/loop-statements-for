@@ -22,6 +22,17 @@ namespace LoopStatementsFor
             }
 
             Console.WriteLine();
+
+            int numberOfDigits = 0;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (char.IsDigit(text[i]))
+                {
+                    numberOfDigits++;
+                }
+            }
+
+            Console.WriteLine($"Text has {numberOfDigits} digits");
         }
     }
 }
