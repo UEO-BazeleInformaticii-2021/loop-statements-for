@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace LoopStatementsFor
 {
@@ -9,29 +10,25 @@ namespace LoopStatementsFor
             Console.Write("Please enter a text=");
             string text = Console.ReadLine();
 
-            for (int i = 0; i < text.Length; i++)
-            {
-                Console.Write(text[i]);
-            }
-
-            Console.WriteLine();
-
-            for (int i = text.Length - 1; i >= 0; i--)
-            {
-                Console.Write(text[i]);
-            }
-
-            Console.WriteLine();
-
             int numberOfDigits = 0;
-            for (int i = 0; i < text.Length; i++)
+            StringBuilder textNormal = new StringBuilder();
+            StringBuilder textReversed = new StringBuilder();
+
+            for (int indexFromStart = 0, indexFromEnd = text.Length - 1; 
+                 indexFromStart < text.Length && indexFromEnd >= 0; 
+                 indexFromStart++, indexFromEnd--)
             {
-                if (char.IsDigit(text[i]))
+                textNormal.Append(text[indexFromStart]);
+                textReversed.Append(text[indexFromEnd]);
+
+                if (char.IsDigit(text[indexFromStart]))
                 {
                     numberOfDigits++;
                 }
             }
 
+            Console.WriteLine(textNormal.ToString());
+            Console.WriteLine(textReversed.ToString());
             Console.WriteLine($"Text has {numberOfDigits} digits");
         }
     }
